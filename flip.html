@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart-like E-commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header/Navbar -->
+    <header class="bg-blue-600 p-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <!-- Logo and Search (Left) -->
+            <div class="flex items-center space-x-4 w-full md:w-auto justify-between md:justify-start">
+                <a href="#" class="text-white text-2xl font-bold flex-shrink-0">
+                    <span class="text-yellow-400">Flip</span><span class="text-white">kart</span>
+                </a>
+                <!-- Search Bar -->
+                <div class="relative flex-grow max-w-sm md:max-w-md">
+                    <input type="text" id="search-input" placeholder="Search for products, brands and more" class="w-full pl-10 pr-4 py-2 rounded-lg bg-blue-700 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white focus:bg-white focus:text-gray-800 transition-all duration-300">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-blue-200"></i>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none ml-4">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <nav id="main-nav" class="hidden md:flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 items-center w-full md:w-auto text-center md:text-left">
+                <a href="#" class="text-white hover:text-blue-200 font-medium py-2 md:py-0 rounded-md transition duration-200"><i class="fas fa-store mr-2"></i>Become a Seller</a>
+                <div class="relative group">
+                    <button class="text-white hover:text-blue-200 font-medium py-2 md:py-0 rounded-md transition duration-200 flex items-center">
+                        <i class="fas fa-user-circle mr-2"></i>Login <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-2 mt-2 w-48 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 transition-all duration-300 origin-top">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md">My Profile</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md">Orders</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md">Wishlist</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md">Rewards</a>
+                    </div>
+                </div>
+                <a href="#" class="text-white hover:text-blue-200 font-medium py-2 md:py-0 rounded-md transition duration-200"><i class="fas fa-shopping-cart mr-2"></i>Cart</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    <nav id="mobile-nav" class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out py-6">
+        <div class="flex justify-between items-center px-6 pb-4 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-blue-600">Menu</h2>
+            <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <ul class="flex flex-col p-6 space-y-4 text-gray-800">
+            <li><a href="#" class="block py-2 hover:bg-gray-100 rounded-md"><i class="fas fa-store mr-3"></i>Become a Seller</a></li>
+            <li>
+                <div class="flex items-center justify-between cursor-pointer py-2 hover:bg-gray-100 rounded-md" onclick="document.getElementById('mobile-login-submenu').classList.toggle('hidden');">
+                    <span><i class="fas fa-user-circle mr-3"></i>Login</span>
+                    <i class="fas fa-chevron-down text-xs ml-2"></i>
+                </div>
+                <ul id="mobile-login-submenu" class="hidden pl-6 mt-2 space-y-2">
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 rounded-md text-sm">My Profile</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 rounded-md text-sm">Orders</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 rounded-md text-sm">Wishlist</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 rounded-md text-sm">Rewards</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="block py-2 hover:bg-gray-100 rounded-md"><i class="fas fa-shopping-cart mr-3"></i>Cart</a></li>
+            <li class="border-t border-gray-200 pt-4 mt-4"><a href="#" class="block py-2 hover:bg-gray-100 rounded-md"><i class="fas fa-question-circle mr-3"></i>Help Center</a></li>
+            <li><a href="#" class="block py-2 hover:bg-gray-100 rounded-md"><i class="fas fa-bell mr-3"></i>Notifications</a></li>
+        </ul>
+    </nav>
+
+    <main class="flex-grow container mx-auto px-4 py-6">
+
+        <section class="bg-white p-4 rounded-lg shadow-sm mb-6 overflow-x-auto no-scrollbar">
+            <div class="flex space-x-8 justify-between lg:justify-around text-center text-gray-700 whitespace-nowrap">
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Electronics" alt="Electronics" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Electronics</span>
+                </div>
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Fashion" alt="Fashion" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Fashion</span>
+                </div>
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Home" alt="Home" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Home & Furniture</span>
+                </div>
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Appliances" alt="Appliances" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Appliances</span>
+                </div>
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Travel" alt="Travel" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Travel</span>
+                </div>
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Groceries" alt="Groceries" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Groceries</span>
+                </div>
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Mobiles" alt="Mobiles" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Mobiles</span>
+                </div>
+                <div class="flex flex-col items-center flex-shrink-0">
+                    <img src="https://placehold.co/60x60/B3E5FC/2196F3?text=Beauty" alt="Beauty" class="w-14 h-14 object-contain rounded-full mb-1">
+                    <span class="text-sm font-medium">Beauty, Toys & More</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-6 relative rounded-lg shadow-md overflow-hidden">
+            <div id="image-carousel" class="w-full h-40 sm:h-56 md:h-72 lg:h-96 relative">
+                <div class="carousel-item active">
+                    <img src="https://placehold.co/1200x400/FF5722/FFFFFF?text=Big+Billion+Days" alt="Banner 1" class="w-full h-full object-cover">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://placehold.co/1200x400/4CAF50/FFFFFF?text=Electronics+Sale" alt="Banner 2" class="w-full h-full object-cover">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://placehold.co/1200x400/2196F3/FFFFFF?text=Fashion+Extravaganza" alt="Banner 3" class="w-full h-full object-cover">
+                </div>
+                <button id="carousel-prev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none z-10"><i class="fas fa-chevron-left"></i></button>
+                <button id="carousel-next" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none z-10"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+       
+        <section class="bg-white p-4 rounded-lg shadow-sm mb-6">
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4 flex items-center justify-between">
+                Deals of the Day
+                <a href="#" class="text-blue-600 text-sm md:text-base hover:underline flex items-center">
+                    View All <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </h2>
+            <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                
+            </div>
+        </section>
+
+        <section class="bg-white p-4 rounded-lg shadow-sm">
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
+                Top Offers
+            </h2>
+            <div id="top-offers-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white p-6 mt-auto">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-blue-300">ABOUT</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">Contact Us</a></li>
+                    <li><a href="#" class="hover:underline">About Us</a></li>
+                    <li><a href="#" class="hover:underline">Careers</a></li>
+                    <li><a href="#" class="hover:underline">Flipkart Stories</a></li>
+                    <li><a href="#" class="hover:underline">Press</a></li>
+                    <li><a href="#" class="hover:underline">Flipkart Wholesale</a></li>
+                    <li><a href="#" class="hover:underline">Corporate Information</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-blue-300">HELP</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">Payments</a></li>
+                    <li><a href="#" class="hover:underline">Shipping</a></li>
+                    <li><a href="#" class="hover:underline">Cancellation & Returns</a></li>
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Report Infringement</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-blue-300">CONSUMER POLICY</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:underline">Cancellation & Returns</a></li>
+                    <li><a href="#" class="hover:underline">Terms Of Use</a></li>
+                    <li><a href="#" class="hover:underline">Security</a></li>
+                    <li><a href="#" class="hover:underline">Privacy</a></li>
+                    <li><a href="#" class="hover:underline">Sitemap</a></li>
+                    <li><a href="#" class="hover:underline">EPR Compliance</a></li>
+                </ul>
+            </div>
+            <div class="border-t md:border-l md:border-t-0 border-gray-700 pt-8 md:pt-0 md:pl-8">
+                <h3 class="font-bold text-lg mb-4 text-blue-300">Mail Us:</h3>
+                <p class="text-sm">
+                    Flipkart Internet Private Limited,<br>
+                    Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br>
+                    Outer Ring Road, Devarabeesanahalli Village,<br>
+                    Bengaluru, 560103,<br>
+                    Karnataka, India
+                </p>
+                <h3 class="font-bold text-lg mb-4 mt-6 text-blue-300">Registered Office Address:</h3>
+                <p class="text-sm">
+                    Flipkart Internet Private Limited,<br>
+                    Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br>
+                    Outer Ring Road, Devarabeesanahalli Village,<br>
+                    Bengaluru, 560103,<br>
+                    Karnataka, India<br>
+                    CIN : U51109KA2012PTC066107<br>
+                    Telephone: <a href="tel:044-45614700" class="hover:underline">044-45614700</a>
+                </p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
+            <div class="mb-4 md:mb-0">
+                <i class="fas fa-briefcase mr-2"></i>Become a Seller
+                <span class="mx-4">|</span>
+                <i class="fas fa-star mr-2"></i>Advertise
+                <span class="mx-4">|</span>
+                <i class="fas fa-gift mr-2"></i>Gift Cards
+                <span class="mx-4">|</span>
+                <i class="fas fa-question-circle mr-2"></i>Help Center
+            </div>
+            <div class="text-right">
+                &copy; 2007-2025 Flipkart.com
+            </div>
+        </div>
+    </footer>
+
+    <script src="flip js"></script>
+</body>
+</html>
