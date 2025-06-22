@@ -1,5 +1,5 @@
-Flipkart Clone
-🚀 Project Overview
+🚀 Project Overview:
+
 [Flipkart Clone] is a robust and feature-rich e-commerce platform, meticulously developed to mirror the core functionality and user experience of a major online retailer like Flipkart. This project serves as a comprehensive demonstration of building a scalable and modern e-commerce solution, from front-end user interface to back-end services.
 
 ✨ Features
@@ -19,7 +19,7 @@ Search & Filters: Powerful search functionality with various filters (price, cat
 Admin Panel (Optional, if applicable): A dedicated administrative interface for managing products, categories, orders, users, and sellers.
 Seller Integration (Optional, if applicable): (If your clone supports multiple sellers) Functionality for sellers to list and manage their products.
 
-🛠️ Technologies Used
+🛠️ Technologies Used:
 
 This project leverages a modern and robust tech stack to deliver a high-performance and scalable e-commerce application.
 
@@ -31,6 +31,7 @@ Frontend:
 [Other relevant libraries, e.g., Redux, React Router]
 
 Backend:
+
 [e.g., Node.js / Python (Django/Flask) / Java (Spring Boot) / PHP (Laravel)]
 [e.g., Express.js (for Node.js)]
 [Other relevant frameworks, e.g., RESTful API design]
